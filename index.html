@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Hidroestática</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body style="background: #000;">
+    <h1>Simulador de Hidroestática Interactivo</h1>
+    <div class="container" style="background: #000;">
+        <div class="simulation" style="background: #000;">
+            <div class="vaso-container">
+                <div class="vaso">
+                    <div class="agua" id="agua"></div>
+                    <div class="objeto" id="objeto" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <div class="controles">
+                <div class="control-group">
+                    <label for="tipo-liquido">Tipo de líquido:</label>
+                    <select id="tipo-liquido">
+                        <option value="agua-dulce">Agua dulce (1000 kg/cm³)</option>
+                        <option value="agua-salada">Agua salada (1200 kg/cm³)</option>
+                        <option value="aceite">Aceite (900 kg/cm³)</option>
+                        <option value="mercurio">Mercurio (13546 kg/cm³)</option>
+                    </select>
+                </div>
+                <div class="botones-objeto">
+                    <button id="btn-huevo" class="btn-objeto">Huevo</button>
+                    <button id="btn-metal" class="btn-objeto">Metal</button>
+                    <button id="btn-hielo" class="btn-objeto">Hielo</button>
+                </div>
+                
+                <div class="control-group">
+                    <label for="masa-objeto">Masa del objeto:</label>
+                    <input type="range" id="masa-objeto" min="5" max="1000" value="0" disabled> 
+                    <span id="valor-masa">0g</span>
+                </div>
+
+                <div class="control-group">
+                    <div id="aguaNivel">
+                        <label for="nivelLiquido">Nivel de Liquido:</label>
+                        <span id="valorNivel">70</span>%
+                    </div>
+                    <input type="range" id="nivelLiquido" min="10" max="95" value="70">
+                </div>
+                
+                <div class="control-group">
+                    <button id="btn-soltar" class="btn-accion">Soltar objeto</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="charts">
+            <div class="datos">
+                <h3>Datos Hidrostáticos</h3>
+                <p>Presión atmosferica: <span id="Patm">101325</span>Pa</p>
+                <p>Presión hidrostática: <span id="presion-hidrostatica">137340</span>Pa</p>
+                <p>Presión absoluta: <span id="presion-absoluta">238665</span>Pa</p>
+                <p>Haltura del Liquido: <span id="altura-liquido">35</span>cm</p>
+                <p>Densidad del objeto: <span id="densidad-objeto">N/A</span> kg/cm³</p>
+                <p>Densidad del líquido: <span id="densidad-liquido">1000.00</span> kg/cm³</p>
+                <p>Volumen sumergido: <span id="volumen">0</span> cm³</p>
+                <p>Empuje hidrostático: <span id="empuje">0</span> N</p>
+            </div>
+            <div class="chart-container">
+                <canvas id="presionChart"></canvas>
+                <div class="no-objeto" id="no-objeto-1">Añade un objeto para ver la gráfica</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="empujeChart"></canvas>
+                <div class="no-objeto" id="no-objeto-2">Añade un objeto para ver la gráfica</div>
+            </div>
+            
+        </div>
+
+    </div>
+    
+    <script src="index.js"></script>
+    
+</body>
+</html>
